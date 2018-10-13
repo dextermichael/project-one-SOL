@@ -50,13 +50,17 @@ canvas.height = window.innerHeight;
 
 //    Objects in the game
 
-var x = 200   
+var circlex = 200   
+var velocityx = 10;
+var radius = 30;
 
 function drawcircle() {
   c.beginPath()
-  c.arc(x,200,30,0,Math.PI * 2, false);
-  c.strokeStyle = 'red'
+  c.arc(circlex,200, radius, 30,0,Math.PI * 2, false);
+  c.strokeStyle = 'red';
+  
   c.stroke();
+
   
  }
 
@@ -74,7 +78,13 @@ c.clearRect(0, 0, innerWidth,innerHeight)
  requestAnimationFrame(FPS)
 
  drawcircle()
- x += 1;
+  // creating collison
+ if ( circlex + radius > innerWidth || circlex - radius < 0 )  {
+    velocityx = -velocityx
+}
+ 
+ 
+  circlex += velocityx;
  
  
  
