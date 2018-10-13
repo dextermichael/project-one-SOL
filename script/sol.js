@@ -8,44 +8,39 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 
- function circle() {
-  c.beginPath()
-  c.arc(200,200,30,0,Math.PI * 2, false);
-  c.strokeStyle = 'red'
-  c.stroke();
- }
-circle()
+ 
+
  
 // c.fillRect(100, 100, 100, 100);
 
 
 //contoller
-controller = {
+// controller = {
   
-    left:false,
-    right:false,
-    up:false,
-    keyListener:function(event) {
+//     left:false,
+//     right:false,
+//     up:false,
+//     keyListener:function(event) {
   
-      var key_state = (event.type == "keydown")?true:false;
+//       var key_state = (event.type == "keydown")?true:false;
   
-      switch(event.keyCode) {
+//       switch(event.keyCode) {
   
-        case 37:// left key
-          controller.left = key_state;
-        break;
-        case 38:// up key
-          controller.up = key_state;
-        break;
-        case 39:// right key
-          controller.right = key_state;
-        break;
+//         case 37:// left key
+//           controller.left = key_state;
+//         break;
+//         case 38:// up key
+//           controller.up = key_state;
+//         break;
+//         case 39:// right key
+//           controller.right = key_state;
+//         break;
   
-      }
+//       }
   
-    }
+//     }
   
-  };
+//   };
 
 
   
@@ -55,8 +50,15 @@ controller = {
 
 //    Objects in the game
 
-   
+var x = 200   
 
+function drawcircle() {
+  c.beginPath()
+  c.arc(x,200,30,0,Math.PI * 2, false);
+  c.strokeStyle = 'red'
+  c.stroke();
+  
+ }
 
 
 
@@ -65,22 +67,21 @@ controller = {
   
 
 
-FPS = function () {
-    c.clearRect(0, 0, canvas.width, canvas.height,);
-
-    drawball()
+FPS = function() {
 
 
+c.clearRect(0, 0, innerWidth,innerHeight)
+ requestAnimationFrame(FPS)
 
-
-
-
-
-
-    requestAnimationFrame(FPS)
+ drawcircle()
+ x += 1;
+ 
+ 
+ 
 
 }
 
+FPS();
 
 
 
@@ -90,6 +91,7 @@ FPS = function () {
 
 
 
-  window.addEventListener("keydown", controller.keyListener)
-  window.addEventListener("keyup", controller.keyListener);
-//   window.requestAnimationFrame(FPS);
+
+  // window.addEventListener("keydown", controller.keyListener)
+  // window.addEventListener("keyup", controller.keyListener);
+  // window.requestAnimationFrame(FPS);
