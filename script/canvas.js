@@ -1,20 +1,77 @@
 var canvas = document.querySelector('#canvas');
-var context = canvas.getContext('2d');// this what we drawing on
-var bullet;
+var c = canvas.getContext('2d');// this what we drawing on
+var gravity = 1;
+var friction = 0.99;
+
+function animate(){
+
+requestAnimationFrame(animate)
+c.clearRect(0 ,0 , canvas.width, canvas.height)
+}
+
+
 
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+//Objects
+ function Player(x,y,dy,radius,color){
+
+    this.x = x;
+    this.y = y;
+    this.dy = dy;
+    this.radius = radius;
+    this.color = color;
+};
+
+Object.prototype.draw = function()  {
+
+    c.beginPath();
+    c.arc(this.x, this.y, this.radius, 0, Math.Pi * 2, false);
+    c.fillStyle = this.color;
+    c.fill();
+    c.stroke();
+    c.closePath();
+};
+
+Object.prototype.update = function () {
+if (this.y + this.radius > canvas.height){
+
+    this.dy = -this.dy * friction;
+
+} else {
+
+
+
+    this.dy += gravity;
+
+    console.log(this.dy)
+}
+
+this.y += this.dy;
+this.draw();
+
+};
+
+
+// animate()
+
+
+
+
+
+
+
 
 var xPos = 0; // postion of box
-var yPos = 0;// postion of box
+var yPos = 700;// postion of box
 
 
 
-var box = context.rect(xPos, yPos, 100, 100);
-var bullet = context.rect(xPos, yPos, 100, 100);
-context.stroke();// draw rectangle
+var box = c.rect(xPos, yPos, 100, 100);
+
+c.stroke();// draw rectangle
 
 function move(e) {  ///
 
@@ -55,8 +112,8 @@ function move(e) {  ///
     // alert(e.keyCode);
 
     canvas.width = canvas.width; //loop
-    context.rect(xPos, yPos, 100, 100);
-    context.stroke();
+    c.rect(xPos, yPos, 100, 100);
+    c.stroke();
 
 }
 
@@ -71,16 +128,16 @@ function blaster() {
 
     requestAnimationFrame(blaster)
 
-    context.rect(xPos, yPos, 100, 100);
+    c.rect(xPos, yPos, 100, 100);
 
-    context.stroke();
-    context.clearRect(xPos, yPos, innerWidth, innerHeight);
+    c.stroke();
+    c.clearRect(xPos, yPos, innerWidth, innerHeight);
     xPos += 3;
 
 
     canvas.width = canvas.width; //loop
-    context.rect(xPos, yPos, 100, 100);
-    context.stroke();
+    c.rect(xPos, yPos, 100, 100);
+    c.stroke();
 }
 
 // blaster()
