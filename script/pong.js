@@ -45,8 +45,7 @@ function keyDownHandler(event)// press the key
  if(event.keyCode == 39){
      rightPressed = true;
 
-
- }
+    }
  else if(event.keyCode == 37){
 
     leftPressed = true;
