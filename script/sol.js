@@ -65,9 +65,10 @@ canvas.height = window.innerHeight;
 var circlex = 200  
 var circley = 700 
 var velocityx = 0;
-var gravity = 2;
+var velocityy = 2;
 var radius = 30;
-var friction = .5;
+var friction = .9;
+ var gravity = 1;
 
 function drawcircle() {
   c.beginPath()
@@ -102,16 +103,16 @@ c.clearRect(0, 0, innerWidth,innerHeight)
  
 if  ( circley + radius > innerHeight)
 {
-  gravity = -gravity;
+  velocityy = -velocityy * friction;
 } 
 else {
-  gravity += 1;
+  velocityy += gravity;
 }
 
 
 
   circlex += velocityx;
-  circley += gravity;
+  circley += velocityy;
  
  
  
