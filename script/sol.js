@@ -48,57 +48,54 @@ var playerOne = {
 
 
 
-function updatePlayer()
-{
-
-  playerOne.x += playerOne.dx;
-  playerOne.y += playerOne.dy;
-c.fillText(playerOne.name ,playerOne.x, playerOne.y);
-
-if(playerOne.x < 0 || playerOne.x > innerWidth){
-
-  playerOne.dx = -playerOne.dx;
-}
-
-if(playerOne.y < 0 || playerOne.y > innerHeight){
-
-  playerOne.dy = -playerOne.dy;
-  }
-
-
-
-}
-
-
 //enemy
+var enemyList = {};
+
 var enemy = {
 
   x: 350,
   y: 440,
   dx: 1,
   dy:1,
-  name:"enemy"
+  name:"E",
+  id:'E1'
+  
+
+};
+
+enemyList['E1'] = enemy;
+
+
+
+var enemy2 = {
+
+  x: 350,
+  y: 440,
+  dx: 1,
+  dy:-1,
+  name:"E",
+  id:'E2'
 
 }
 
+enemyList['E2'] = enemy2;
 
 
-
-function updateEnemy()
+function updateBlock(block)
 {
 
-  enemy.x += enemy.dx;
-  enemy.y += enemy.dy;
-c.fillText(enemy.name ,enemy.x, enemy.y);
+  block.x += block.dx;
+  block.y += block.dy;
+c.fillText(block.name ,block.x, block.y);
 
-if(enemy.x < 0 || enemy.x > innerWidth){
+if(block.x < 0 || block.x > innerWidth){
 
-  enemy.dx = -enemy.dx;
+  block.dx = -block.dx;
 }
 
-if(enemy.y < 0 || enemy.y > innerHeight){
+if(block.y < 0 || block.y > innerHeight){
 
-  enemy.dy = -enemy.dy;
+  block.dy = -block.dy;
 }
 
 
@@ -176,11 +173,13 @@ else {
 FPS = function() {
 
 
-c.clearRect(0, 0, innerWidth,innerHeight)
+ c.clearRect(0, 0, innerWidth,innerHeight)
  requestAnimationFrame(FPS)
- updateEnemy()
- updatePlayer()
+ 
  player.update()
+ updateBlock(enemyList['E2'])
+ updateBlock(enemyList['E1'])
+ updateBlock(playerOne)
  
 
 }
