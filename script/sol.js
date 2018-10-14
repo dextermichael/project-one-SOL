@@ -50,17 +50,31 @@ canvas.height = window.innerHeight;
 
 //    Objects in the game
 
+
+
+
+
+
+
+
+
+
+
+
+
 var circlex = 200  
-var circley = 200 
+var circley = 700 
 var velocityx = 0;
-var gravity = 1;
+var gravity = 2;
 var radius = 30;
-var friction = 0.09;
+var friction = .5;
 
 function drawcircle() {
   c.beginPath()
   c.arc(circlex,circley, radius, 30,0,Math.PI * 2, false);
   c.strokeStyle = 'red';
+  c.fillStyle = 'red';
+  c.fill();
   
   c.stroke();
 
@@ -86,10 +100,15 @@ c.clearRect(0, 0, innerWidth,innerHeight)
     velocityx = -velocityx
 }
  
-if  ( circley + radius > innerHeight || circley - radius < 0)
+if  ( circley + radius > innerHeight)
 {
-  gravity = -gravity * friction;
+  gravity = -gravity;
 } 
+else {
+  gravity += 1;
+}
+
+
 
   circlex += velocityx;
   circley += gravity;
