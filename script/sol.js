@@ -42,6 +42,13 @@ canvas.height = window.innerHeight;
   
 //   };
 
+var circlex = 200;  
+var circley = 00;
+var velocityx = 0;
+var velocityy = 2;
+var radius = 30;
+var friction = .9;
+ var gravity = 1;
 
   
 
@@ -51,42 +58,72 @@ canvas.height = window.innerHeight;
 //    Objects in the game
 
 
+function Shape(circlex, circley, velocityx, velocityy){
 
+this.circlex = circlex;
+this.circley = circley;
+this.velocityx = velocityx
+this.velocityy = velocityy
+this.radius = radius
+this.draw = function(){
 
+  
 
-
-
-
-
-
-
-
-
-var circlex = 200  
-var circley = 700 
-var velocityx = 0;
-var velocityy = 2;
-var radius = 30;
-var friction = .9;
- var gravity = 1;
-
-function drawcircle() {
   c.beginPath()
-  c.arc(circlex,circley, radius, 30,0,Math.PI * 2, false);
-  c.strokeStyle = 'red';
-  c.fillStyle = 'red';
+  c.arc(this.circlex,this.circley, this.radius, 30,0,Math.PI * 2, false);
+  c.strokeStyle = 'gold';
+  c.fillStyle = 'blue';
   c.fill();
-  
   c.stroke();
+  }
+
+this.update = function(){
+
+  if  ( this.circley + this.radius > innerHeight)
+{
+  this.velocityy = -this.velocityy * friction;
+} 
+else {
+  this.velocityy += gravity;
+
+
+}
+
+
+
+
+  this.circlex += this.velocityx;
+  this.circley += this.velocityy;
+  this.draw()
+
+     }
+
+     
+}
+
+ var circle = new Shape(300,200, 0, 0, 0);
+ 
+
+
+
+
+// function drawCircle() {
+//   c.beginPath()
+//   c.arc(circlex,circley, radius, 30,0,Math.PI * 2, false);
+//   c.strokeStyle = 'red';
+//   c.fillStyle = 'red';
+//   c.fill();
+//   c.stroke();
 
   
- }
+//  }
 
 
 
 
 
-  
+
+
 
 
 FPS = function() {
@@ -94,25 +131,27 @@ FPS = function() {
 
 c.clearRect(0, 0, innerWidth,innerHeight)
  requestAnimationFrame(FPS)
-
- drawcircle()
-  // creating collison
- if ( circlex + radius > innerWidth || circlex - radius < 0 )  {
-    velocityx = -velocityx
-}
  
-if  ( circley + radius > innerHeight)
-{
-  velocityy = -velocityy * friction;
-} 
-else {
-  velocityy += gravity;
-}
+
+ circle.update()
+//  drawCircle();
+  // creating collison
+//  if ( circlex + radius > innerWidth || circlex - radius < 0 )  {
+//     velocityx = -velocityx
+// }
+ 
+// if  ( circley + radius > innerHeight)
+// {
+//   velocityy = -velocityy * friction;
+// } 
+// else {
+//   velocityy += gravity;
+// }
 
 
 
-  circlex += velocityx;
-  circley += velocityy;
+//   circlex += velocityx;
+//   circley += velocityy;
  
  
  

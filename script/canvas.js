@@ -31,7 +31,7 @@ c.rect(xPos, yPos, 100, 100);
 
 c.stroke();// draw rectangle
 
-function move(e) {  ///
+function move(e) {  
 
 
 
