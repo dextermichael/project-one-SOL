@@ -1,6 +1,7 @@
 // View
 var canvas = document.querySelector('#canvas');
 var c = canvas.getContext("2d");
+c.font = '400px Arial';
 var contoller; // controller
 var FPS;// loop
 var circlex = 200;  
@@ -13,7 +14,7 @@ var gravity = 1;
 
 
 
-c.font = '30px Arial';
+
 
 
 
@@ -49,36 +50,35 @@ var playerOne = {
 
 
 //enemy
+
 var enemyList = {};
+
+
+Enemy('E1',250,440,1,1);
+Enemy('E2',350,440,1,1);
+Enemy('E3',550,240,1,1);
+
+
+
+
+function Enemy(id,x,y,dx,dy,) {
+
 
 var enemy = {
 
-  x: 350,
-  y: 440,
-  dx: 1,
-  dy:1,
+  x:x,
+  y: y,
+  dx: dx,
+  dy:dy,
   name:"E",
-  id:'E1'
-  
-
-};
-
-enemyList['E1'] = enemy;
-
-
-
-var enemy2 = {
-
-  x: 350,
-  y: 440,
-  dx: 1,
-  dy:-1,
-  name:"E",
-  id:'E2'
-
+  id:id
+  }
+enemyList[id] = enemy;
 }
 
-enemyList['E2'] = enemy2;
+
+
+
 
 
 function updateBlock(block)
@@ -176,34 +176,17 @@ FPS = function() {
  c.clearRect(0, 0, innerWidth,innerHeight)
  requestAnimationFrame(FPS)
  
- player.update()
- updateBlock(enemyList['E2'])
- updateBlock(enemyList['E1'])
+//  player.update()
+ 
  updateBlock(playerOne)
  
+for( var key in enemyList){
+  updateBlock(enemyList[key])
+}
 
 }
 
 //  if (controller.up && )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
-
-
 
 FPS();
 
