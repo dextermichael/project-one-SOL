@@ -29,6 +29,7 @@ I want to thank  Sir Issac Newton
   pythagoras of samos
   My MOM
   Nike shoe box for holding the cash
-  
+  boys and blue that put weed before the badge
+
  I had a hard time with gravity
  Im glad i strecthed myself though
