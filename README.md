@@ -18,4 +18,4 @@ Paythgaroem therom
 Gravity
 
 i want to thank Issac Newton
-
+ I had a hard with gravity
