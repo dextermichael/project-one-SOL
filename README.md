@@ -20,7 +20,8 @@ Gravity
 
 
 
- I wanted to create a game about a kid and a spacechip A kid maned Sol.
+ I wanted to create a game about a lonely kid named Sol and a spacechip.
+ 
 
 
 
