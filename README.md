@@ -25,6 +25,7 @@ Gravity
 
 
 
-I want to thank Issac Newton
+I want to thank  Sir Issac Newton
+  pythagoras of samos
  I had a hard with gravity
  Im glad i strecthed myself though
