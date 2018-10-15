@@ -6,7 +6,9 @@ Site
 
 http://friendly-bartik-1ee311.netlify.com
 
+WireFrame
 
+images/Image from iOS.jpg
 
 Resources 
 
@@ -16,3 +18,4 @@ Paythgaroem therom
 Gravity
 
 i want to thank Issac Newton
+
