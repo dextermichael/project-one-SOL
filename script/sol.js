@@ -11,6 +11,9 @@ var radius = 30;
 var friction = .9;
 var gravity = 1;
 var gameStart = Date.now();
+var frameCount = 0;
+var score = 0;
+var counter = 0; 
 
   
 
@@ -35,7 +38,21 @@ var playerOne = {
   hp:20,
   width:20,
   height:20,
-  color:'green'
+  color:'green',
+  atkSd:1,
+  atkCounter:0,
+  pressingDown:false,
+  pressingUp:false,
+  pressingLeft:false,
+  pressingRight:false,
+
+};
+
+document.onkeydown = function(event){
+event.keyCode 
+alert(event.keyCode);
+
+
 }
 
 
@@ -43,11 +60,14 @@ var playerOne = {
 //enemy
 
 var enemyList = {};
+var bulletList = {};
+var upgradeList = {}
 
 
 
 
-
+// this is tracking the movement of the rectangles
+// with the pythagoras theum
 
 getDisBetObjects = function (entity1,entity2){
 
@@ -56,6 +76,7 @@ getDisBetObjects = function (entity1,entity2){
   return Math.sqrt(vx*vx*vy*vy);
 }
 
+// dectecting when the rectangles collide
 testCollisionE = function  (entity1,entity2){
 var rect1 = {
 x:entity1.x-entity1.width/2,
@@ -86,7 +107,7 @@ return rect1.x <= rect2.x+rect2.width
 
 
 
-
+// enemy object
 Enemy = function (id,x,y,dx,dy,width,height) {
 
 
@@ -106,15 +127,93 @@ var enemy = {
 enemyList[id] = enemy;
 }
 
+randomEnemies = function(){
+  var x = Math.floor(Math.random()*innerWidth);
+  var y = Math.floor(Math.random()*innerHeight);
+  var height = 10 + Math.floor(Math.random()*30);
+  var width = 10 + Math.floor(Math.random()*30);
+  var id = Math.random();
+  var dx = 5 + Math.floor(Math.random()*5);
+  var dy = 5 + Math.floor(Math.random()*5);
+  Enemy(id,x,y,dy,dx,width,height);
+  
+}
+
+
+
+
+Bullet = function (id,x,y,dx,dy,width,height) {
+
+
+  var aaa = {
+  
+    x:x,
+    y: y,
+    dx: dx,
+    dy:dy,
+    name:"E",
+    id:id,
+    color:'black',
+    width:width,
+    height:height,
+    timer:0
+  
+    };
+  bulletList[id] = aaa;
+  }
+
+randomBullet = function(){
+
+	var x = playerOne.x;
+	var y = playerOne.y;
+	var height = 10;
+	var width = 10;
+	var id = Math.random();
+	
+	var angle = Math.random()*360;
+	var dx= Math.cos(angle/180*Math.PI)*5;
+	var dy = Math.sin(angle/180*Math.PI)*5;
+	Bullet(id,x,y,dx,dy,width,height);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 document.onmousemove = function(mouse) {
 
   var mouseX = mouse.clientX;
   var mouseY = mouse.clientY;
 
+  if(mouseX < playerOne.width/2)
+		mouseX = playerOne.width/2;
+	if(mouseX > innerWidth-playerOne.width/2)
+		mouseX = innerWidth - playerOne.width/2;
+	if(mouseY < playerOne.height/2)
+		mouseY = playerOne.height/2;
+	if(mouseY > innerHeight - playerOne.height/2)
+		mouseY = innerHeight- playerOne.height/2; 
+
+
+
   playerOne.x = mouseX;
   playerOne.y = mouseY;
 }
 
+document.onclick = function(mouse){
+  if(playerOne.atkCounter > 25){
+    randomBullet();
+    playerOne.atkCounter = 0;
+  }
+}
 
 
 
@@ -170,40 +269,90 @@ FPS = function() {
  requestAnimationFrame(FPS)
  
 //  player.update()
- 
+frameCount++;
+score++;
 
+if(frameCount % 100 === 0)
+randomEnemies();
 
+playerOne.atkCounter += playerOne.atkSd;
  
- 
-for( var key in enemyList){
-  updateBlock(enemyList[key])
   
-  var isColl = testcollisionrectrect(playerOne,enemyList[key]);
+ 
+
+for( var key in bulletList){
+  updateBlock(bulletList[key])
+
+var remove = false;
+
+    bulletList[key].timer++;
+    if(bulletList[key].timer > 75){
+      remove = true;
+}
+  
+
+
+  for(var key2 in enemyList) {
+  var isColl = testcollisionrectrect(bulletList[key],enemyList[key2]);
+  if(isColl){
+    remove = true;
+    delete enemyList [key2];
+    break;
+  }
+}
+
+if(remove){
+  delete bulletList[key];
+}
+ 
+}
+
+
+
+  for( var key in enemyList){
+    updateBlock(enemyList[key])
+
+var isColl = testcollisionrectrect(playerOne,enemyList[key]);
   if(isColl){
     playerOne.hp = playerOne.hp - 1;
-    if(playerOne.hp <= 0){
+     }
+    }
+  if(playerOne.hp <= 0){
     playerOne.hp = 10
-  }
-    
+    startNewGame()
   }
   drawObject(playerOne);
   c.fillText(playerOne.hp +"Hp", 0, 40);
+  c.fillText("Score:" +score, 200, 30);
+  
   
 }
-
-
+startNewGame = function(){ /// restart function
+playerOne.hp = 10
+gameStart = Date.now()
+framecount = 0;
+enemyList = {};
+bulletList = {};
+randomEnemies();
+randomEnemies();
+randomEnemies();
 
 
 }
 
-Enemy('E1',150,140,1,1,30,30);
-Enemy('E2',350,440,1,1,40,50);
-Enemy('E3',550,240,1,1,30,55);
+
+
+
+
+
+
+
 
 
 
 
 FPS();
+
 
 
 
