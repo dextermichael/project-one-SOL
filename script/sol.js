@@ -10,6 +10,9 @@ var gameStart = Date.now();
 var frameCount = 0;
 var score = 0;
 var counter = 0;
+
+
+
 var sprite = function(frame_set,delay){
 
   this.count = 0
@@ -17,6 +20,22 @@ var sprite = function(frame_set,delay){
   this.frame = 0;
   this.frame_index = frame_set;
 };
+
+sprite.prototype = {
+
+  change:function(frame_set,delay =15){
+
+
+    if (this.frame_set != frame_set) {
+
+
+
+      
+    }
+  }
+
+
+}
 
 
 
