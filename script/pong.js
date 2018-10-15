@@ -95,7 +95,7 @@ function drawPaddle() {
 
     c.beginPath();
     c.rect(paddleX, canvas.height - paddleHeight, paddleWidth , paddleHeight);
-    c.fillStyle = "red"; // color
+    c.fillStyle = "gold"; // color
     c.fill();
     c.closePath();
 
