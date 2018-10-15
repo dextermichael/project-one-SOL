@@ -403,7 +403,8 @@ FPS = function () {
   drawObject(playerOne);
 
 
-  c.fillText(playerOne.hp + "Hp", 0, 40);
+ 
+  document.querySelector('.hp').innerHTML = "HP" + playerOne.hp
   document.querySelector('.score').innerHTML = "Score:" + score
   // c.fillText(, 200, 30);
 
