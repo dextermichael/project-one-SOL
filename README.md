@@ -20,7 +20,7 @@ Gravity
 
 
 
- I wanted to create a game about a lonely kid named Sol and a spacechip.
+ I wanted to create a game about a lonely kid named Sol and a spacechip. On his quest to build a warp spaceship he forced to make friends and possibly finds something worth more to him than solitude.
  
 
 
