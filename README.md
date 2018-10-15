@@ -27,5 +27,6 @@ Gravity
 
 I want to thank  Sir Issac Newton
   pythagoras of samos
+  My MOM
  I had a hard time with gravity
  Im glad i strecthed myself though
