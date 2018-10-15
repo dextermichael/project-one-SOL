@@ -17,6 +17,13 @@ Canvas
 Paythgaroem therom
 Gravity
 
-i want to thank Issac Newton
+
+
+
+ I wanted to create a game about a kid and a spacechip A kid maned Sol.
+
+
+
+I want to thank Issac Newton
  I had a hard with gravity
  Im glad i strecthed myself though
