@@ -3,23 +3,11 @@ var c = canvas.getContext('2d');// this what we drawing on
 var gravity = -1;
 var friction = 0.99;
 
-
-
-
-
+//Create canvas
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-//Objects
-
-
 // animate()
-
-
-
-
-
-
 
 
 var xPos = 300; // postion of box
