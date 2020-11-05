@@ -12,21 +12,8 @@ var score = 0;
 var counter = 0;
 c.font = "100px Arial"
 
-
-
-
-
-
-
-
-
-
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
-
-
 
 
 
@@ -211,9 +198,6 @@ randomEnemies = function () {
 
 }
 
-
-
-
 Bullet = function (id, x, y, dx, dy, width, height) {
 
 
@@ -247,18 +231,6 @@ randomBullet = function () {
   var dy = 0
   Bullet(id, x, y, dx, dy, width, height);
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
